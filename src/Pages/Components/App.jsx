@@ -32,6 +32,21 @@ const App = () => {
         };
         setTasks([...tasks, newTask]);
       };
+
+    //   Edit
+    const editTask = (taskId, newTitle, newPriority) => {
+        setTasks(tasks.map(task => {
+          if (task.id === taskId) {
+            return { ...task, title: newTitle, priority: newPriority };
+          }
+          return task;
+        }));
+      };
+
+     // Delete
+     const deleteTask = (taskId) => {
+        setTasks(tasks.filter(task => task.id !== taskId));
+      };
     //toggleTaskStatus
     const toggleTaskStatus = (taskId) => {
         setTasks(tasks.map(task => {
@@ -41,11 +56,6 @@ const App = () => {
           return task;
         }));
       };
-    // Delete
-    const deleteTask = (taskId) => {
-        setTasks(tasks.filter(task => task.id !== taskId));
-      };
-
     //Counter
     const updateTaskCounters = () => {
     setTotalTasks(tasks.length);
@@ -87,6 +97,7 @@ const App = () => {
          tasks={filteredTasks}
          toggleTaskStatus={toggleTaskStatus}
          deleteTask={deleteTask}
+         editTask={editTask}
       />
        
       </div>
