@@ -27,6 +27,16 @@ const App = () => {
         };
         setTasks([...tasks, newTask]);
       };
+    //toggleTaskStatus
+    const toggleTaskStatus = (taskId) => {
+        setTasks(tasks.map(task => {
+          if (task.id === taskId) {
+            return { ...task, completed: !task.completed };
+          }
+          return task;
+        }));
+      };
+    
     return (
         <div className='space-y-4'>
       <h1 className='text-2xl text-center font-medium my-10'>Todo List App</h1>
@@ -35,6 +45,7 @@ const App = () => {
       <TaskForm onSubmit={addTask} />
       <TaskList
          tasks={tasks}
+         toggleTaskStatus={toggleTaskStatus}
       />
        
       </div>
