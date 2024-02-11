@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TaskForm from './TaskForm';
+import TaskList from './TaskList';
 const App = () => {
     const [tasks, setTasks] = useState([]);
     // Add Task
@@ -18,6 +19,9 @@ const App = () => {
        
        
       <TaskForm onSubmit={addTask} />
+      <TaskList
+         tasks={tasks}
+      />
        
       </div>
     
