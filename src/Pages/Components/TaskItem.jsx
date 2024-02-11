@@ -1,11 +1,14 @@
 import { useState } from "react";
 
-const TaskItem = ({ task, toggleTaskStatus }) => {
+const TaskItem = ({ task, toggleTaskStatus, deleteTask }) => {
  
   const [title, setTitle] = useState(task.title);
   
   const handleToggleStatus = () => {
     toggleTaskStatus(task.id);
+  };
+  const handleDelete = () => {
+    deleteTask(task.id);
   };
 
   const priorityColors = {
@@ -31,6 +34,7 @@ const TaskItem = ({ task, toggleTaskStatus }) => {
         <button onClick={handleToggleStatus} className="btn btn-success btn-xs">
             {task.completed ? 'Incomplete' : 'Complete'}
         </button>
+        <button onClick={handleDelete} className="btn btn-error btn-xs">Delete</button>
       </div>
       
    

@@ -45,6 +45,10 @@ const App = () => {
         const completedTasksCount = tasks.filter(task => task.completed).length;
         setCompletedTasks(completedTasksCount);
     };
+    // Delete
+    const deleteTask = (taskId) => {
+        setTasks(tasks.filter(task => task.id !== taskId));
+      };
     
     return (
         <div className='space-y-4'>
@@ -57,6 +61,7 @@ const App = () => {
       <TaskList
          tasks={tasks}
          toggleTaskStatus={toggleTaskStatus}
+         deleteTask={deleteTask}
       />
        
       </div>
